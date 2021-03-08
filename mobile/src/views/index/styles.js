@@ -4,7 +4,7 @@ import Constants from "expo-constants"
 export default StyleSheet.create({
   container: {
     flex: 1,
-      backgroundColor: '#D0CDD7',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -13,13 +13,16 @@ export default StyleSheet.create({
     alignItems: "center",
   },
    title: {
-     fontSize: 32,
+     marginBottom: 30,
+     fontSize: 48,
      fontWeight: 'bold'
    },
    button:{
      marginTop: 20,
      textAlign: 'center',
      backgroundColor: 'black',
+     fontSize: 14,
+     fontWeight: 'bold',
      color: 'white',
      padding: 16,
      width: 290

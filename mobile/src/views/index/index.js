@@ -6,10 +6,6 @@ import api from '../../services/api'
 
 import styles from "./styles"
 
-
-
-
-
 export default function Index() {
 
   const navigation = useNavigation()
@@ -18,16 +14,19 @@ export default function Index() {
     navigation.navigate("Register")
   }
 
+  function navigationToLogin() {
+    navigation.navigate("Login")
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Home</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigationToLogin()}>
         <Text style={styles.button}>LOGAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigationToRegister()}
-        >
+        <TouchableOpacity onPress={() => navigationToRegister()}>
         <Text style={styles.button}>CRIAR CONTA</Text>
         </TouchableOpacity>
       </View>

@@ -11,12 +11,7 @@ export default function Register() {
     <View style={styles.container}>
       <View style={styles.header}>
           <View style={styles.inputContainer}>
-            <Text style={styles.title}>Cadastrar</Text>
-            <Text style={styles.names}>Nome</Text>
-              <TextInput 
-              placeholder="Nome"
-              style={styles.input}
-              ></TextInput>
+            <Text style={styles.title}>Login</Text>
             <Text style={styles.names}>Email</Text>
               <TextInput 
               placeholder="Email"
@@ -28,14 +23,8 @@ export default function Register() {
               placeholder="Senha"
               style={styles.input}
               ></TextInput>
-            <Text style={styles.names}>Confirmar senha</Text>
-              <TextInput 
-              secureTextEntry 
-              placeholder="Confirmar senha"
-              style={styles.input}
-              ></TextInput>
             <TouchableOpacity>
-            <Text style={styles.button}>CRIAR CONTA</Text>
+            <Text style={styles.button}>ENTRAR</Text>
             </TouchableOpacity>
         </View>
       </View>

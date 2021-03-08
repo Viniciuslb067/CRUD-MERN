@@ -6,6 +6,7 @@ const AppStack = createStackNavigator()
 
 import Index from './views/index/index'
 import Register from './views/register/index'
+import Login from './views/login/index'
 
 export default function routes() {
   return (
@@ -15,6 +16,7 @@ export default function routes() {
 
         <AppStack.Screen name="Index" component={Index}/>
         <AppStack.Screen name="Register" component={Register}/>
+        <AppStack.Screen name="Login" component={Login}/>
 
       </AppStack.Navigator>
 
