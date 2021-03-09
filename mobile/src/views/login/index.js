@@ -7,6 +7,7 @@ import api from '../../services/api'
 import styles from "./styles"
 
 export default function Register() {
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

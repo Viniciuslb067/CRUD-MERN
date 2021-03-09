@@ -12,10 +12,10 @@ router.get('/', (req, res) => {
 router.get('/dashboard', async (req, res) => {
   await User.find({}, (err, result) => {
     if(err) {
-    res.send(err)
+    res.json(err)
     }
     else {
-      res.send(result)
+      res.json(result)
     }
   }) 
 })
