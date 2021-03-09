@@ -21,13 +21,12 @@ export default StyleSheet.create({
     backgroundColor: '#edeef7',
     paddingHorizontal: 24,
     fontSize: 16,
-    alignItems: 'stretch'
+    alignItems: 'center'
    }, 
    inputContainer: {
        marginTop: 30,
        width: '90%',
        padding: 20,
-       alignItems: 'stretch',
        backgroundColor: 'white'
    },
    button: {
@@ -41,6 +40,7 @@ export default StyleSheet.create({
     width: 290
   },
   names: {
+    alignItems: 'stretch',
     marginTop: 8,
     fontSize: 15,
     color: 'black',

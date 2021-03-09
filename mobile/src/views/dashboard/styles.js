@@ -26,5 +26,15 @@ export default StyleSheet.create({
      color: 'white',
      padding: 16,
      width: 290
+   },
+   containerLabel: {
+    backgroundColor: 'gray'
+
+
+   },
+   label: {
+     marginBottom: -10,
+     marginRight: 150,
+     padding: 10,
    }
 })

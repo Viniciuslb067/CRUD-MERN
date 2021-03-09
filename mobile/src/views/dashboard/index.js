@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigation } from "@react-navigation/native"
-import { View, FlatList, Text, TouchableOpacity, TextInput, Button} from "react-native"
+import { View, Text, SafeAreaView, TextInput, Button} from "react-native"
 
 import api from '../../services/api'
 
@@ -15,7 +15,6 @@ export default function Dashboard() {
     const response = await api.get('/dashboard')
 
      setUserList(response.data)
-     console.log(userList._id)
    }
 
    useEffect(() => {
@@ -23,20 +22,23 @@ export default function Dashboard() {
    }, [])
 
   return (
+    <SafeAreaView>
     <View style={styles.container}>
       <View style={styles.header}>
+        <Text style={styles.title}>Dashboard</Text>
           <View>
             {userList.map((value) => {
               return (
-                <View>
-                <Text>Nome: {value.name} </Text>
-                <Text>Email: {value.email}</Text>
-                <Text>Nível: {value.level}</Text>
+                <View style={styles.containerLabel}>
+                  <Text style={styles.label}>Nome: {value.name} </Text>
+                  <Text style={styles.label}>Nível: {value.level}</Text>
+                  <Text style={styles.label}>Email: {value.email}</Text>
                 </View>
               )
             })}
           </View>
       </View>
     </View>
+    </SafeAreaView>
   );
 }
