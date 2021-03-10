@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { logout, getToken } from './auth'
+import { getToken } from './auth'
 import { Route, Redirect } from 'react-router-dom'
 import api from './api'
 

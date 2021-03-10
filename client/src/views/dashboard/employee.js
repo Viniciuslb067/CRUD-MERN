@@ -1,9 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootswatch/dist/lux/bootstrap.min.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons' 
 import React, { useState, useEffect } from 'react'
-import { getToken, logout, getNameUser, getTypeUser}  from '../../services/auth'
+import { getToken, logout, getNameUser}  from '../../services/auth'
 
 import api from "../../services/api"
 

@@ -5,28 +5,22 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingTop: Constants.statusBarHeight + 20,
   },
 
   header: {
     justifyContent: "space-between",
     alignItems: "center",
   },
-
+  welcome: {
+    fontSize: 17,
+    marginBottom: 8,
+  },
    title: {
      marginBottom: 30,
      fontSize: 50,
      fontWeight: 'bold'
-   },
-
-   containerLabel: {
-    backgroundColor: '#edeef7'
-
-   },
-   label: {
-     marginRight: 150,
-     padding: 8,
    },
 
    userList: {
@@ -36,7 +30,7 @@ export default StyleSheet.create({
    user: {
      padding: 24,
      borderRadius: 8, 
-     backgroundColor: '#edeef7',
+     backgroundColor: '#9899A6',
      marginBottom: 16,
    },
 

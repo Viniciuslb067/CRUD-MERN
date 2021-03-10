@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema({
   level: {
     type: String
   },
+  acess: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now

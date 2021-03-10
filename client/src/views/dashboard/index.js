@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootswatch/dist/superhero/bootstrap.min.css";
 import React, { useState, useEffect } from 'react'
-import { getToken, logout, getNameUser, getTypeUser}  from '../../services/auth'
+import {getTypeUser}  from '../../services/auth'
 
 import api from "../../services/api"
 

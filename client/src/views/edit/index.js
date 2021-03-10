@@ -8,6 +8,7 @@ export default function Edit() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [level, setLevel] = useState("")
+    const [acess, setAcess] = useState("")
 
     const { id } = useParams()
 
@@ -17,15 +18,17 @@ export default function Edit() {
         setName(response.data.name)
         setEmail(response.data.email)
         setLevel(response.data.level)
+        setAcess(response.data.acess)
       }
       getUser()
-    },[])
+    },[id])
     
     async function submit(){
       const data = {
         name:name,
         email:email,
         level:level,
+        acess: acess,
         _id:id  
       }
         await api.put('/users/editar',data)
@@ -99,6 +102,19 @@ export default function Edit() {
             <option>Vendedor</option>
             <option>Gerente de vendas</option>
             <option>Administrador</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Acesso</label>
+            <select 
+            id="level"
+            name="level"
+            className="form-control"
+            value={acess}
+            onChange={e => setAcess(e.target.value)}
+            >
+            <option>Bloqueado</option>
+            <option>Liberado</option>
             </select>
           </div>
           <button onClick={submit} className="btn btn-primary btn-block">

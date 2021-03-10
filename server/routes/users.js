@@ -51,10 +51,14 @@ router.post('/register', async (req, res) => {
       name,
       email,
       password: bcrypt.hashSync(password, salt),
-      level: "Sem nível"
+      level: "Sem nível",
+      acess: "Bloqueado"
     })
+
     await newUser.save()
+
     return res.status(200).json({status:1, success: "Usuário cadastrado com sucesso!"})
+
   } else {
     return res.status(200).json({status:2, error: "Usuario já cadastrado!"});
   }
@@ -62,14 +66,14 @@ router.post('/register', async (req, res) => {
 })
 
 router.put('/editar', async (req, res) => {
-  const {_id,name, level} = req.body
+  const {_id, name, level, acess} = req.body
   
-  const data = {name, level}
+  const data = {name, level, acess}
 
   if(name.length <= 3) {
     return res.status(200).json({status:2, error: "O nome tem que possuir +3 caracteres "})
   } else {
-    await User.findByIdAndUpdate({_id},data, {new:true})
+    await User.findByIdAndUpdate({_id}, data, {new:true})
 
     return res.status(200).json({status:1, success: "Usuário atualizado com sucesso!"})
   }
@@ -77,21 +81,33 @@ router.put('/editar', async (req, res) => {
 })
 
 router.post('/login', (req, res, next) => {
-  const {email, password, level} = req.body
+  const {email, password, acess} = req.body
+
+    // User.find({acess})
+    // console.log(acess)
+
+    // if(acess == 0) {
+    //   res.status(200).json({status:2, error: "Acesso bloqueado!"}) 
+    // }
+
   User.findOne({email}, function(err, user){
     if(err) {
       console.log(err)
     } else if(!user){
       if(!email || !password) {
-        res.status(200).json({status:2, error: "Preencha todos os campos!"})
+        return res.status(200).json({status:2, error: "Preencha todos os campos!"})
       } else
-        res.status(200).json({status:2, error: "Email não cadastrado!"})
+        return res.status(200).json({status:2, error: "Email não cadastrado!"})
     } else {
+
+      if(user.acess === "Bloqueado"){
+        return res.status(200).json({status:2, error: "Acesso bloqueado!"})
+     }
       user.isCorrectPassword(password, async function (err, same) {
         if(err) {
-          res.status(200).json({error: "Erro no servidor!" })
+          return res.status(200).json({error: "Erro no servidor!" })
         } else if(!same){
-          res.status(200).json({status:2, error: "Senha incorreta!"})
+          return res.status(200).json({status:2, error: "Senha incorreta!"})
         } else {
           const payload = {email}
           const token = jwt.sign(payload, secret, {
