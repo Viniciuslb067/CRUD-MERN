@@ -18,10 +18,7 @@ export default function Index() {
     navigation.navigate("Login")
   }
 
-  function navigationToDashboard() {
-    navigation.navigate("Dashboard")
-  }
-
+ 
 
   return (
     <View style={styles.container}>
@@ -29,9 +26,6 @@ export default function Index() {
         <Text style={styles.title}>Home</Text>
         <TouchableOpacity onPress={() => navigationToLogin()}>
         <Text style={styles.button}>LOGAR</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigationToDashboard()}>
-        <Text style={styles.button}>DASHBOARD</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigationToRegister()}>
         <Text style={styles.button}>CRIAR CONTA</Text>

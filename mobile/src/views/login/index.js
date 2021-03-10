@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigation } from "@react-navigation/native"
-import { View, Alert, Text, TouchableOpacity, TextInput, Button} from "react-native"
+import { View, Text, TouchableOpacity, TextInput, Button} from "react-native"
 import styles from "./styles"
 
 import api from '../../services/api'
@@ -12,7 +12,7 @@ export default function Login() {
   
   const navigation = useNavigation()
 
-  function navigateToDashboard(incident) {
+  function navigateToDashboard() {
     navigation.navigate("Dashboard")
   }
 
@@ -29,11 +29,7 @@ export default function Login() {
   
            }
           else if(res.data.status === 2){
-            console.log(res.data.error)
-           Alert.alert('OOPS!', ' ' + res.data.error  [
-             {text: 'Understood'}
-           ])
-          
+            alert('' + res.data.error)
          }
        })
   }

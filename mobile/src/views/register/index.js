@@ -13,6 +13,12 @@ export default function Register() {
   const [password, setPassword] = useState(0)
   const [password2, setPassword2] = useState(0)
 
+  const navigation = useNavigation()
+
+  function navigateToLogin() {
+    navigation.navigate("Login")
+  }
+
   const handleSubmit = () => {
     const data = {
       name: name,
@@ -24,7 +30,10 @@ export default function Register() {
     api.post('/users/register', data)
       .then(res => {
         if(res.data.status === 2) {
-          console.log(res.data.error)
+          alert('' + res.data.error)
+        } else {
+          alert('' + res.data.success)
+          navigateToLogin()
         }
       })
   }
@@ -38,27 +47,27 @@ export default function Register() {
               <TextInput 
               style={styles.input}
               placeholder="Nome"
-              onChange={(event) => {setName(event.target.value)}}
+              onChangeText={text => setName(text)}
               ></TextInput>
             <Text style={styles.names}>Email</Text>
               <TextInput 
               placeholder="Email"
               style={styles.input}
-              onChange={(event) => {setEmail(event.target.value)}}
+              onChangeText={text => setEmail(text)}
               ></TextInput>
             <Text style={styles.names}>Senha</Text>
               <TextInput 
               secureTextEntry
               placeholder="Senha"
               style={styles.input}
-              onChange={(event) => {setPassword(event.target.value)}}
+              onChangeText={text => setPassword(text)}
               ></TextInput>
             <Text style={styles.names}>Confirmar senha</Text>
               <TextInput 
               secureTextEntry 
               placeholder="Confirmar senha"
               style={styles.input}
-              onChange={(event) => {setPassword2(event.target.value)}}
+              onChangeText={text => setPassword2(text)}
               ></TextInput>
             <TouchableOpacity>
             <Text onPress={handleSubmit} style={styles.button}>CRIAR CONTA</Text>

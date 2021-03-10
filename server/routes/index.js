@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const {authenticated} = require('../config/auth')
 
 const User = require('../models/User')
 
