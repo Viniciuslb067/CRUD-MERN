@@ -14,10 +14,10 @@ router.get('/editar/:_id', async (req, res) => {
 
 router.post('/register', async (req, res) => {
   const {name, email, password, password2} = req.body
-  var defaultName = /[^a-zà-ú]/gi;
-  var defaultEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  var checkName = name.match(defaultName)
-  var checkEmail = email.match(defaultEmail)
+  // var defaultName = /[^a-zà-ú]/gi;
+  // var checkName = name.match(defaultName)
+  // var defaultEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
 
   if(!name || !email || !password || !password2) {
     return res.status(200).json({status:2, error: "Preencha todos os campos!"})
@@ -27,13 +27,13 @@ router.post('/register', async (req, res) => {
     return res.status(200).json({status:2, error: "O nome tem que possuir +3 caracteres "})
   }
 
-  if(checkName) {
-    return res.status(200).json({status:2, error: "O nome é inválido!"})
-  }
+  // if(checkName) {
+  //   return res.status(200).json({status:2, error: "O nome é inválido!"})
+  // }
 
-  if(checkEmail) {
-    return res.status(200).json({status:2, error: "O email é inválido!"})
-  }
+  // if(checkEmail) {
+  //   return res.status(200).json({status:2, error: "O email é inválido!"})
+  // }
 
   if(password !== password2) {
     return res.status(200).json({status:2, error: "As senhas não coincidem!"});

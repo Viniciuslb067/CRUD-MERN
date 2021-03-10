@@ -22,7 +22,6 @@ export default function Dashboard() {
    }, [])
 
   return (
-    <SafeAreaView>
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Dashboard</Text>
@@ -39,6 +38,6 @@ export default function Dashboard() {
           </View>
       </View>
     </View>
-    </SafeAreaView>
+  
   );
 }

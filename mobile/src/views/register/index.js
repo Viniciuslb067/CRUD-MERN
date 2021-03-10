@@ -27,7 +27,6 @@ export default function Register() {
           console.log(res.data.error)
         }
       })
-
   }
 
   return (

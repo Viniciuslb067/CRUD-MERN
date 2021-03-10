@@ -14,27 +14,16 @@ export default StyleSheet.create({
   },
    title: {
      marginBottom: 30,
-     fontSize: 48,
+     fontSize: 50,
      fontWeight: 'bold'
    },
-   button:{
-     marginTop: 20,
-     textAlign: 'center',
-     backgroundColor: 'black',
-     fontSize: 14,
-     fontWeight: 'bold',
-     color: 'white',
-     padding: 16,
-     width: 290
-   },
    containerLabel: {
-    backgroundColor: 'gray'
+    backgroundColor: '#edeef7'
 
 
    },
    label: {
-     marginBottom: -10,
      marginRight: 150,
-     padding: 10,
+     padding: 8,
    }
 })

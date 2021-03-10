@@ -1,35 +1,41 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useNavigation } from "@react-navigation/native"
-import { View, FlatList, Text, TouchableOpacity, TextInput, Button} from "react-native"
+import { View, Alert, Text, TouchableOpacity, TextInput, Button} from "react-native"
 import styles from "./styles"
 
 import api from '../../services/api'
 import {login, setIdUser, setNameUser, setTypeUser} from '../../services/auth'
 
 export default function Login() {
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
+  const navigation = useNavigation()
+
+  function navigateToDashboard(incident) {
+    navigation.navigate("Dashboard")
+  }
 
   async function handleSubmit() {
-    await api.post('/users/login', {email, password})
-      .then(res => {
-        if(res.status === 200) {
-          if(res.data.status === 1) {
-              login(res.data.token)
-              setIdUser(res.data.id_user)
-              setNameUser(res.data.user_name)
-              setTypeUser(res.data.user_type)
+     await api.post('/users/login', {email, password})
+       .then(res => {
+           if(res.data.status === 1) {
+               login(res.data.token)
+               setIdUser(res.data.id_user)
+               setNameUser(res.data.user_name)
+               setTypeUser(res.data.user_type)
 
-              console.log('deu bom')
+               navigateToDashboard()
   
-          }
-        } else if(res.data.status === 2){
-
-          console.log(res.data.error)
+           }
+          else if(res.data.status === 2){
+            console.log(res.data.error)
+           Alert.alert('OOPS!', ' ' + res.data.error  [
+             {text: 'Understood'}
+           ])
           
-        }
-      })
+         }
+       })
   }
 
   return (
@@ -41,19 +47,17 @@ export default function Login() {
               <TextInput 
               placeholder="Email"
               style={styles.input}
-              value={email}
-              onChange={event => setEmail(event.target.value)}
+              onChangeText={text => setEmail(text)}
               ></TextInput>
             <Text style={styles.names}>Senha</Text>
               <TextInput 
               secureTextEntry
               placeholder="Senha"
               style={styles.input}
-              value={password}
-              onChange={event => setPassword(event.target.value)}
+              onChangeText={text => setPassword(text)}
               ></TextInput>
             <TouchableOpacity>
-            <Text onPress={handleSubmit} style={styles.button}>ENTRAR</Text>
+            <Text onPress={() => handleSubmit()} style={styles.button}>ENTRAR</Text>
             </TouchableOpacity>
         </View>
       </View>
