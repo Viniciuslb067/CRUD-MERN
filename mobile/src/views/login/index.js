@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import { useNavigation } from "@react-navigation/native"
-import { View, Text, TouchableOpacity, TextInput, Button} from "react-native"
+import  AsyncStorage  from '@react-native-community/async-storage'
+import { View, Text, TouchableOpacity, TextInput} from "react-native"
 import styles from "./styles"
 
 import api from '../../services/api'
-import {login, setIdUser, setNameUser, setTypeUser} from '../../services/auth'
+
 
 export default function Login() {
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
@@ -17,21 +19,25 @@ export default function Login() {
   }
 
   async function handleSubmit() {
-     await api.post('/users/login', {email, password})
-       .then(res => {
-           if(res.data.status === 1) {
-               login(res.data.token)
-               setIdUser(res.data.id_user)
-               setNameUser(res.data.user_name)
-               setTypeUser(res.data.user_type)
+     const res = await api.post('/users/login', {email, password})
 
-               navigateToDashboard()
-  
-           }
-          else if(res.data.status === 2){
-            alert('' + res.data.error)
-         }
-       })
+      const {token, id_user, user_name, user_type} = res.data
+
+      if(res.data.status === 1) {
+
+        await AsyncStorage.multiSet([
+          ['&user-token', token],
+          ['&id-user', id_user],
+          ['&name-user', user_name],
+          ['&user-type', user_type]
+       
+        ])
+
+        navigateToDashboard()
+
+      } else if(res.data.status === 2){
+        alert('' + res.data.error)
+     }
   }
 
   return (

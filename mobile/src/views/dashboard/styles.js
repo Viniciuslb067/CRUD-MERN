@@ -30,7 +30,7 @@ export default StyleSheet.create({
    user: {
      padding: 24,
      borderRadius: 8, 
-     backgroundColor: '#9899A6',
+     backgroundColor: '#edeef7',
      marginBottom: 16,
    },
 
@@ -39,6 +39,17 @@ export default StyleSheet.create({
      color: '#41414d',
      fontWeight: 'bold'
    },
+
+   button: {
+    marginTop: 30,
+    textAlign: 'center',
+    backgroundColor: 'black',
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: 'white',
+    padding: 20,
+    width: 290
+  },
 
    userValue: {
      marginTop: 8,

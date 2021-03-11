@@ -54,7 +54,7 @@ router.post('/register', async (req, res) => {
       level: "Sem nível",
       acess: "Bloqueado"
     })
-
+    
     await newUser.save()
 
     return res.status(200).json({status:1, success: "Usuário cadastrado com sucesso!"})
@@ -101,7 +101,7 @@ router.post('/login', (req, res, next) => {
     } else {
 
       if(user.acess === "Bloqueado"){
-        return res.status(200).json({status:2, error: "Acesso bloqueado!"})
+        return res.status(200).json({status:2, error: "Aguardando aprovação!"})
      }
       user.isCorrectPassword(password, async function (err, same) {
         if(err) {
@@ -150,5 +150,6 @@ router.get('/logout', (req,res) => {
   }
   res.send("Sessão finalizada com sucesso!");
 })
+
 
 module.exports = router 
